@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Interaktif: Pengenalan Library SymPy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-amber-50 text-gray-800">
+
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <aside class="w-full md:w-64 bg-gray-100 p-6 shadow-lg md:sticky md:top-0 md:self-start">
+            <h1 class="text-2xl font-bold text-gray-900 mb-6">Modul SymPy</h1>
+            <nav id="navigation" class="space-y-2">
+                <a href="#pendahuluan" class="nav-link block p-3 rounded-lg font-medium hover:bg-gray-200">Pendahuluan</a>
+                <a href="#aljabar" class="nav-link block p-3 rounded-lg font-medium hover:bg-gray-200">Aljabar Dasar</a>
+                <a href="#kalkulus" class="nav-link block p-3 rounded-lg font-medium hover:bg-gray-200">Kalkulus Dasar</a>
+                <a href="#persamaan" class="nav-link block p-3 rounded-lg font-medium hover:bg-gray-200">Penyelesaian Persamaan</a>
+                <a href="#matriks" class="nav-link block p-3 rounded-lg font-medium hover:bg-gray-200">Manipulasi Matriks</a>
+                <a href="#latihan" class="nav-link block p-3 rounded-lg font-medium hover:bg-gray-200">Soal Latihan</a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-6 md:p-10">
+            <section id="pendahuluan" class="content-section space-y-6">
+                <h2 class="text-3xl font-bold text-gray-900 border-b-2 border-blue-500 pb-2">Pengenalan Library SymPy</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-lg leading-relaxed">SymPy adalah library Python yang digunakan untuk melakukan
+                        perhitungan simbolik dalam matematika. Dengan SymPy, ekspresi matematis dapat direpresentasikan,
+                        disederhanakan, dievaluasi, dan dimanipulasi secara simbolis, bukan hanya secara numerik. Tujuan
+                        dari SymPy adalah untuk menyediakan alat-alat yang memungkinkan perhitungan matematika dilakukan
+                        dengan akurasi simbolik yang tinggi, sehingga perhitungan seperti aljabar, kalkulus, dan operasi
+                        matriks dapat diselesaikan secara analitis.</p>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800">12.1. Cara Import SymPy</h3>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="mb-4">Untuk menggunakan modul SymPy, Anda harus melakukan import terlebih dahulu. Berikut
+                        adalah cara standar untuk mengimport library SymPy:</p>
+                    <div class="code-block">import sympy as sp</div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-800">12.2. Pendefinisian Simbol</h3>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="mb-4">Langkah pertama dalam komputasi simbolik adalah mendefinisikan simbol menggunakan
+                        fungsi `symbols()`. Ini memungkinkan variabel diperlakukan sebagai entitas aljabar yang dapat
+                        dimanipulasi secara matematis.</p>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">1. Mendefinisikan satu simbol:</p>
+                        <div class="code-block">x = sp.symbols('x')
+x</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">x</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">2. Mendefinisikan beberapa simbol:</p>
+                        <div class="code-block">a, b, c = sp.symbols("a b c")
+a + b + c</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">a + b + c</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">3. Mendefinisikan simbol variabel dengan indeks:</p>
+                        <div class="code-block">x1, x2, x3 = sp.symbols("x1 x2 x3")
+x1 + x2 + x3</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">x1 + x2 + x3</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">4. Mendefinisikan simbol dengan notasi range:</p>
+                        <div class="code-block">x_n = sp.symbols('x:5')
+x_n[0] + x_n[1] + x_n[2] + x_n[3] + x_n[4]</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">x0 + x1 + x2 + x3 + x4</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block">
+                        <p class="font-medium mb-2">5. Mendefinisikan simbol Yunani:</p>
+                        <div class="code-block">alpha, beta, gamma = sp.symbols("alpha beta gamma")
+alpha + beta + gamma</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">α + β + γ</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="aljabar" class="content-section space-y-6">
+                <h2 class="text-3xl font-bold text-gray-900 border-b-2 border-blue-500 pb-2">12.3. Aljabar Dasar</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="mb-4">SymPy memungkinkan Anda melakukan operasi aljabar dasar secara simbolik. Ini termasuk
+                        penjumlahan, pengurangan, perkalian, dan pembagian, serta fungsi yang lebih canggih seperti
+                        `expand()` dan `simplify()`.</p>
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">1. Penjumlahan Simbolik:</p>
+                        <div class="code-block">x, y = sp.symbols('x y')
+addition = x + y
+addition</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">x + y</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">2. Pengurangan Simbolik:</p>
+                        <div class="code-block">x, y = sp.symbols('x y')
+subtraction = x - y
+subtraction</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">x - y</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">3. Perkalian Simbolik:</p>
+                        <div class="code-block">x, y = sp.symbols('x y')
+multiplication = x * y
+multiplication</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">x*y</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">4. Pembagian Simbolik:</p>
+                        <div class="code-block">x, y = sp.symbols('x y')
+division = x / y
+division</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">x/y</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">5. Mengembangkan Ekspresi dengan `expand()`:</p>
+                        <div class="code-block">expr = (x + y)**2
+expanded_expr = expr.expand()
+expanded_expr</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">x**2 + 2*x*y + y**2</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block">
+                        <p class="font-medium mb-2">6. Menyederhanakan Ekspresi dengan `simplify()`:</p>
+                        <div class="code-block">x = sp.symbols('x')
+simplified_expr = sp.simplify(sp.sin(x)**2 + sp.cos(x)**2)
+simplified_expr</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">1</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="kalkulus" class="content-section space-y-6">
+                <h2 class="text-3xl font-bold text-gray-900 border-b-2 border-blue-500 pb-2">12.4. Kalkulus Dasar</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="mb-4">SymPy sangat kuat untuk operasi kalkulus seperti diferensiasi, integrasi, dan limit. Ini
+                        memungkinkan penyelesaian analitis dari masalah kalkulus.</p>
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">1. Diferensiasi dengan `.diff()`:</p>
+                        <div class="code-block">x = sp.symbols('x')
+f = x**3 + 2*x**2 + x
+f_prime = f.diff(x)
+f_prime</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">3*x**2 + 4*x + 1</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">2. Pendefinisian Fungsi Trigonometri:</p>
+                        <div class="code-block">x = sp.symbols('x')
+f = sp.sin(x)
+f</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">sin(x)</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">3. Integrasi Tak Tentu dengan `.integrate()`:</p>
+                        <div class="code-block">x = sp.symbols('x')
+f = sp.sin(x)
+f_integral_indef = sp.integrate(f, x)
+f_integral_indef</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">-cos(x)</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">4. Integrasi Tentu dengan `.integrate()`:</p>
+                        <div class="code-block">x = sp.symbols('x')
+f = sp.sin(x)
+f_integral_def = sp.integrate(f, (x, 0, sp.pi))
+f_integral_def</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">2</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">5. Pendefinisian Fungsi untuk Limit:</p>
+                        <div class="code-block">x = sp.symbols('x')
+f = sp.sin(x) / x
+f</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">sin(x)/x</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">6. Menghitung Limit dengan `.limit()`:</p>
+                        <div class="code-block">x = sp.symbols('x')
+f = sp.sin(x) / x
+f_limit = sp.limit(f, x, 0)
+f_limit</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">1</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block">
+                        <p class="font-medium mb-2">7. Derivatif Orde Tinggi (`.diff()`):</p>
+                        <div class="code-block">x = sp.symbols('x')
+f = x**4
+f_second_derivative = f.diff(x, 2)
+f_second_derivative</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">12*x**2</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="persamaan" class="content-section space-y-6">
+                <h2 class="text-3xl font-bold text-gray-900 border-b-2 border-blue-500 pb-2">12.5. Penyelesaian Persamaan
+                    Simbolik</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="mb-4">Menyelesaikan persamaan adalah salah satu fitur inti SymPy. `solve()` digunakan untuk
+                        persamaan aljabar, dan `dsolve()` untuk persamaan diferensial.</p>
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">1. Mendefinisikan Persamaan Simbolik (`sp.Eq()`):</p>
+                        <div class="code-block">x = sp.symbols('x')
+equation = sp.Eq(x**2 - 4, 0)
+equation</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">x**2 - 4 == 0</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">2. Mendefinisikan Persamaan dengan Beberapa Variabel (`sp.Eq()`):</p>
+                        <div class="code-block">x, y = sp.symbols('x y')
+equation = sp.Eq(x**3 - 2, y - 2 + 3*x)
+equation</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">x**3 - 2 == 3*x + y - 2</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">3. Menyelesaikan Persamaan Aljabar (`sp.solve()`):</p>
+                        <div class="code-block">x = sp.symbols('x')
+equation = sp.Eq(x**2 - 4, 0)
+solution = sp.solve(equation, x)
+solution</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">[-2, 2]</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">4. Menyelesaikan Sistem Persamaan Aljabar (`sp.solve()`):</p>
+                        <div class="code-block">x, y = sp.symbols('x y')
+eq1 = sp.Eq(x + y, 5)
+eq2 = sp.Eq(x - y, 1)
+solution = sp.solve([eq1, eq2], (x, y))
+solution</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">{x: 3, y: 2}</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">5. Menyelesaikan Persamaan Diferensial Biasa (`sp.dsolve()`):</p>
+                        <div class="code-block">t = sp.symbols('t')
+y = sp.Function('y')(t)
+equation = sp.Eq(y.diff(t) + y, 0)
+solution = sp.dsolve(equation, y)
+solution</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">Eq(y(t), C1*exp(-t))</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block">
+                        <p class="font-medium mb-2">6. Menyelesaikan Persamaan Diferensial Orde Tinggi (`sp.dsolve()`):</p>
+                        <div class="code-block">t = sp.symbols('t')
+y = sp.Function('y')(t)
+equation = sp.Eq(y.diff(t, t) + y, 0)
+solution = sp.dsolve(equation, y)
+solution</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">Eq(y(t), C1*sin(t) + C2*cos(t))</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="matriks" class="content-section space-y-6">
+                <h2 class="text-3xl font-bold text-gray-900 border-b-2 border-blue-500 pb-2">12.6. Manipulasi Matriks</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="mb-4">SymPy menyediakan berbagai alat untuk manipulasi matriks, yang mencakup
+                        pendefinisian matriks, operasi determinan, operasi invers, dan perkalian matriks.</p>
+                    
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">1. Pendefinisian Matriks 2x2 (`sp.Matrix()`):</p>
+                        <div class="code-block">A = sp.Matrix([[1, 2], [3, 4]])
+A</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">Matrix([[1, 2], [3, 4]])</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">2. Pendefinisian Matriks Nol 3x3 (`sp.zeros()`):</p>
+                        <div class="code-block">A = sp.zeros(3)
+A</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">3. Pendefinisian Matriks Identitas 3x3 (`sp.eye()`):</p>
+                        <div class="code-block">A = sp.eye(3)
+A</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">Matrix([[1, 0, 0], [0, 1, 0], [0, 0, 1]])</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">4. Menghitung Determinan Matriks (`.det()`):</p>
+                        <div class="code-block">A = sp.Matrix([[1, 2], [3, 4]])
+det_A = A.det()
+det_A</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">-2</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">5. Menghitung Invers Matriks (`.inv()`):</p>
+                        <div class="code-block">A = sp.Matrix([[1, 2], [3, 4]])
+inv_A = A.inv()
+inv_A</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">Matrix([[-2, 1], [3/2, -1/2]])</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">6. Perkalian Matriks:</p>
+                        <div class="code-block">A = sp.Matrix([[1, 2], [3, 4]])
+B = sp.Matrix([[5, 6], [7, 8]])
+mat_mul = A * B
+mat_mul</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">Matrix([[19, 22], [43, 50]])</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block mb-4">
+                        <p class="font-medium mb-2">7. Transpose Matriks (`.T`):</p>
+                        <div class="code-block">A = sp.Matrix([[1, 2, 3], [4, 5, 6]])
+A_transpose = A.T
+A_transpose</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">Matrix([[1, 4], [2, 5], [3, 6]])</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-code-block">
+                        <p class="font-medium mb-2">8. Reshape Matriks (`.reshape()`):</p>
+                        <div class="code-block">vec = sp.Matrix([1, 2, 3, 4, 5, 6])
+reshaped_matrix = vec.reshape(2, 3)
+reshaped_matrix</div>
+                        <button
+                            class="run-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Jalankan</button>
+                        <div class="code-output">
+                            <pre class="output-block">Matrix([[1, 2, 3], [4, 5, 6]])</pre>
+                            <button
+                                class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                                Jelaskan Output ✨</button>
+                            <div class="loading-indicator">Memuat penjelasan...</div>
+                            <div class="explanation-block"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="latihan" class="content-section space-y-6">
+                <h2 class="text-3xl font-bold text-gray-900 border-b-2 border-blue-500 pb-2">12.7. Soal Latihan</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-lg leading-relaxed">Uji pemahaman Anda dengan menyelesaikan soal-soal latihan berikut
+                        menggunakan SymPy.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md space-y-4">
+                    <h3 class="text-xl font-semibold">A. Mencari Akar Persamaan</h3>
+                    <p>Carilah akar-akar dari persamaan berikut (jika akar-akarnya imajiner atau tidak ada, tuliskan output
+                        apa yang muncul di layar):</p>
+                    <ul class="list-decimal list-inside space-y-2">
+                        <li>x - 2 = 0</li>
+                        <li>x^2 - 3x - 4 = 0</li>
+                        <li>x^2 - 6x + 9 = 0</li>
+                        <li>x^2 - x - 1 = 0</li>
+                        <li>x^3 - 6x^2 + 11x - 6 = 0</li>
+                        <li>x^3 - 7x^2 + 15x - 9 = 0</li>
+                        <li>x^5 + 7x^4 - 9x^2 + 15x + 2 = 0</li>
+                        <li>x^5 + 9x^2 + 2 = 0</li>
+                    </ul>
+                    <button
+                        class="solution-btn mt-2 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Tampilkan/Sembunyikan
+                        Solusi</button>
+                    <div class="code-output">
+                        <p class="font-medium mb-2 mt-4">Solusi untuk x - 2 = 0:</p>
+                        <div class="code-block">x = sp.symbols('x')
+sp.solve(x - 2, x)</div>
+                        <pre class="output-block">[2]</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk x^2 - 3x - 4 = 0:</p>
+                        <div class="code-block">x = sp.symbols('x')
+sp.solve(x**2 - 3*x - 4, x)</div>
+                        <pre class="output-block">[-1, 4]</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk x^2 - 6x + 9 = 0:</p>
+                        <div class="code-block">x = sp.symbols('x')
+sp.solve(x**2 - 6*x + 9, x)</div>
+                        <pre class="output-block">[3]</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk x^2 - x - 1 = 0:</p>
+                        <div class="code-block">x = sp.symbols('x')
+sp.solve(x**2 - x - 1, x)</div>
+                        <pre class="output-block">[1/2 - sqrt(5)/2, 1/2 + sqrt(5)/2]</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk x^3 - 6x^2 + 11x - 6 = 0:</p>
+                        <div class="code-block">x = sp.symbols('x')
+sp.solve(x**3 - 6*x**2 + 11*x - 6, x)</div>
+                        <pre class="output-block">[1, 2, 3]</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk x^3 - 7x^2 + 15x - 9 = 0:</p>
+                        <div class="code-block">x = sp.symbols('x')
+sp.solve(x**3 - 7*x**2 + 15*x - 9, x)</div>
+                        <pre class="output-block">[1, 3]</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk x^5 + 7x^4 - 9x^2 + 15x + 2 = 0:</p>
+                        <div class="code-block">x = sp.symbols('x')
+sp.solve(x**5 + 7*x**4 - 9*x**2 + 15*x + 2, x)</div>
+                        <pre class="output-block">[RootOf(x**5 + 7*x**4 - 9*x**2 + 15*x + 2, 0), RootOf(x**5 + 7*x**4 - 9*x**2 + 15*x + 2, 1), RootOf(x**5 + 7*x**4 - 9*x**2 + 15*x + 2, 2), RootOf(x**5 + 7*x**4 - 9*x**2 + 15*x + 2, 3), RootOf(x**5 + 7*x**4 - 9*x**2 + 15*x + 2, 4)]</pre>
+                        <button class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk x^5 + 9x^2 + 2 = 0:</p>
+                        <div class="code-block">x = sp.symbols('x')
+sp.solve(x**5 + 9*x**2 + 2, x)</div>
+                        <pre class="output-block">[RootOf(x**5 + 9*x**2 + 2, 0), RootOf(x**5 + 9*x**2 + 2, 1), RootOf(x**5 + 9*x**2 + 2, 2), RootOf(x**5 + 9*x**2 + 2, 3), RootOf(x**5 + 9*x**2 + 2, 4)]</pre>
+                        <button class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md space-y-4">
+                    <h3 class="text-xl font-semibold">B. Mencari Turunan</h3>
+                    <p>Carilah turunan pertama (dy/dx) dari:</p>
+                    <ul class="list-decimal list-inside space-y-2">
+                        <li>y = x^3 + 3x^2 + 6x</li>
+                        <li>y = x^5 + x^4</li>
+                        <li>y = (3x + 5)^3</li>
+                        <li>y = (3 - 5x)^5</li>
+                        <li>y = sin(7x)</li>
+                        <li>y = sin(x^3)</li>
+                        <li>y = 1/(x - 1)</li>
+                        <li>y = 3x/(1 - x)</li>
+                    </ul>
+                    <button
+                        class="solution-btn mt-2 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Tampilkan/Sembunyikan
+                        Solusi</button>
+                    <div class="code-output">
+                        <p class="font-medium mb-2 mt-4">Solusi untuk y = x^3 + 3x^2 + 6x:</p>
+                        <div class="code-block">x = sp.symbols('x')
+f = x**3 + 3*x**2 + 6*x
+f.diff(x)</div>
+                        <pre class="output-block">3*x**2 + 6*x + 6</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk y = x^5 + x^4:</p>
+                        <div class="code-block">x = sp.symbols('x')
+f = x**5 + x**4
+f.diff(x)</div>
+                        <pre class="output-block">5*x**4 + 4*x**3</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk y = (3x + 5)^3:</p>
+                        <div class="code-block">x = sp.symbols('x')
+f = (3*x + 5)**3
+f.diff(x)</div>
+                        <pre class="output-block">9*(3*x + 5)**2</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk y = (3 - 5x)^5:</p>
+                        <div class="code-block">x = sp.symbols('x')
+f = (3 - 5*x)**5
+f.diff(x)</div>
+                        <pre class="output-block">-25*(3 - 5*x)**4</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk y = sin(7x):</p>
+                        <div class="code-block">x = sp.symbols('x')
+f = sp.sin(7*x)
+f.diff(x)</div>
+                        <pre class="output-block">7*cos(7*x)</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk y = sin(x^3):</p>
+                        <div class="code-block">x = sp.symbols('x')
+f = sp.sin(x**3)
+f.diff(x)</div>
+                        <pre class="output-block">3*x**2*cos(x**3)</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk y = 1/(x - 1):</p>
+                        <div class="code-block">x = sp.symbols('x')
+f = 1/(x - 1)
+f.diff(x)</div>
+                        <pre class="output-block">-1/(x - 1)**2</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk y = 3x/(1 - x):</p>
+                        <div class="code-block">x = sp.symbols('x')
+f = 3*x/(1 - x)
+f.diff(x)</div>
+                        <pre class="output-block">3/(1 - x)**2</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md space-y-4">
+                    <h3 class="text-xl font-semibold">C. Mencari Integral Tentu</h3>
+                    <p>Carilah integral tentu (definite integral) dari:</p>
+                    <ul class="list-decimal list-inside space-y-2">
+                        <li>Integral dari x^3 dari 0 sampai 2</li>
+                        <li>Integral dari x^4 dari -1 sampai 2</li>
+                        <li>Integral dari (3x^2 - 2x + 3) dari -1 sampai 2</li>
+                        <li>Integral dari (4x^3 + 7) dari 1 sampai 2</li>
+                        <li>Integral dari 1/w^2 dari 1 sampai 4</li>
+                        <li>Integral dari 2/t^3 dari 1 sampai 3</li>
+                        <li>Integral dari akar(t) dari 0 sampai 4</li>
+                        <li>Integral dari akar pangkat 3 dari w dari 1 sampai 8</li>
+                        <li>Integral dari (y^2 + 1/y^3) dari -4 sampai -2</li>
+                        <li>Integral dari (s^4 - 8)/s^2 dari 1 sampai 4</li>
+                        <li>Integral dari cos x dari 0 sampai pi/2</li>
+                        <li>Integral dari 2 sin t dari pi/6 sampai pi/2</li>
+                        <li>Integral dari (2x^4 - 3x^2 + 5) dari 0 sampai 1</li>
+                        <li>Integral dari (x^(4/3) - 2x^(1/3)) dari 0 sampai 1</li>
+                    </ul>
+                    <button
+                        class="solution-btn mt-2 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Tampilkan/Sembunyikan
+                        Solusi</button>
+                    <div class="code-output">
+                        <p class="font-medium mb-2 mt-4">Solusi untuk Integral dari x^3 dari 0 sampai 2:</p>
+                        <div class="code-block">x = sp.symbols('x')
+sp.integrate(x**3, (x, 0, 2))</div>
+                        <pre class="output-block">4</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk Integral dari x^4 dari -1 sampai 2:</p>
+                        <div class="code-block">x = sp.symbols('x')
+sp.integrate(x**4, (x, -1, 2))</div>
+                        <pre class="output-block">33/5</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk Integral dari (3x^2 - 2x + 3) dari -1 sampai 2:
+                        </p>
+                        <div class="code-block">x = sp.symbols('x')
+sp.integrate(3*x**2 - 2*x + 3, (x, -1, 2))</div>
+                        <pre class="output-block">18</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk Integral dari (4x^3 + 7) dari 1 sampai 2:</p>
+                        <div class="code-block">x = sp.symbols('x')
+sp.integrate(4*x**3 + 7, (x, 1, 2))</div>
+                        <pre class="output-block">23</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk Integral dari 1/w^2 dari 1 sampai 4:</p>
+                        <div class="code-block">w = sp.symbols('w')
+sp.integrate(1/w**2, (w, 1, 4))</div>
+                        <pre class="output-block">3/4</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk Integral dari 2/t^3 dari 1 sampai 3:</p>
+                        <div class="code-block">t = sp.symbols('t')
+sp.integrate(2/t**3, (t, 1, 3))</div>
+                        <pre class="output-block">8/9</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk Integral dari akar(t) dari 0 sampai 4:</p>
+                        <div class="code-block">t = sp.symbols('t')
+sp.integrate(sp.sqrt(t), (t, 0, 4))</div>
+                        <pre class="output-block">16/3</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk Integral dari akar pangkat 3 dari w dari 1 sampai 8:
+                        </p>
+                        <div class="code-block">w = sp.symbols('w')
+sp.integrate(w**(sp.Rational(1,3)), (w, 1, 8))</div>
+                        <pre class="output-block">45/4</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk Integral dari (y^2 + 1/y^3) dari -4 sampai -2:
+                        </p>
+                        <div class="code-block">y = sp.symbols('y')
+sp.integrate(y**2 + 1/y**3, (y, -4, -2))</div>
+                        <pre class="output-block">56/3 - 3/32</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk Integral dari (s^4 - 8)/s^2 dari 1 sampai 4:</p>
+                        <div class="code-block">s = sp.symbols('s')
+sp.integrate((s**4 - 8)/s**2, (s, 1, 4))</div>
+                        <pre class="output-block">57/2</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk Integral dari cos x dari 0 sampai pi/2:</p>
+                        <div class="code-block">x = sp.symbols('x')
+sp.integrate(sp.cos(x), (x, 0, sp.pi/2))</div>
+                        <pre class="output-block">1</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk Integral dari 2 sin t dari pi/6 sampai pi/2:</p>
+                        <div class="code-block">t = sp.symbols('t')
+sp.integrate(2*sp.sin(t), (t, sp.pi/6, sp.pi/2))</div>
+                        <pre class="output-block">1</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk Integral dari (2x^4 - 3x^2 + 5) dari 0 sampai 1:
+                        </p>
+                        <div class="code-block">x = sp.symbols('x')
+sp.integrate(2*x**4 - 3*x**2 + 5, (x, 0, 1))</div>
+                        <pre class="output-block">22/5</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+
+                        <p class="font-medium mb-2 mt-4">Solusi untuk Integral dari (x^(4/3) - 2x^(1/3)) dari 0 sampai 1:
+                        </p>
+                        <div class="code-block">x = sp.symbols('x')
+sp.integrate(x**(sp.Rational(4,3)) - 2*x**(sp.Rational(1,3)), (x, 0, 1))</div>
+                        <pre class="output-block">-19/21</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md space-y-4">
+                    <h3 class="text-xl font-semibold">D. Mencari Determinan Matriks</h3>
+                    <p>Diberikan matriks A sebagai berikut. Dengan menggunakan library Sympy, carilah determinan dari
+                        matriks A.</p>
+                    <div class="code-block">A = sp.Matrix([[1, 0, 0, -1],
+                     [3, 1, 2, 2],
+                     [1, 0, -2, 1],
+                     [2, 0, 0, 1]])</div>
+                    <button
+                        class="solution-btn mt-2 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Tampilkan/Sembunyikan
+                        Solusi</button>
+                    <div class="code-output">
+                        <p class="font-medium mb-2 mt-4">Solusi untuk determinan matriks A:</p>
+                        <div class="code-block">A = sp.Matrix([[1, 0, 0, -1],
+                     [3, 1, 2, 2],
+                     [1, 0, -2, 1],
+                     [2, 0, 0, 1]])
+det_A = A.det()
+det_A</div>
+                        <pre class="output-block">-8</pre>
+                        <button
+                            class="explain-btn mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-1 px-3 rounded text-sm">
+                            Jelaskan Output ✨</button>
+                        <div class="loading-indicator">Memuat penjelasan...</div>
+                        <div class="explanation-block"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="bg-gray-100 py-6 mt-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center text-gray-600">
+                <p class="mb-2">©2025 Modul Pembelajaran SymPy</p>
+                <p class="text-sm">Dibuat dengan ❤️ untuk pembelajaran matematika komputasi</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
